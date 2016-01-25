@@ -12,15 +12,19 @@ public class Paper {
     }
 
     public int getWidth(){
-        return width;
+
+      return width;
     }
 
     public int getHeight(){
-        return height;
+
+      return height;
     }
 
     public boolean within(int x, int y){
-        return (x >= 0 && y >= 0 && x < getWidth() && y < getHeight());
+
+      return (x >= 0 && y >= 0 && x < getWidth() && y < getHeight());
+
     }
 
     public char mark(int x, int y, char character){
