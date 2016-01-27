@@ -40,13 +40,13 @@ public class Turtle {
         return state;
     }
 
-    public char changeBrush(char value){
+    public char changeBrush(char valueNew){
 
-      return value;
+      return valueNew;
 
     }
 
-    public char markCurrent(char brush){
+    public char markCurrent(){
         if(state == Pen.DOWN){
           paper.mark(x, y, brush);
         }
@@ -59,31 +59,27 @@ public class Turtle {
         int xUpdated = 0;
 
         if(direction == Direction.NORTH){
-          xUpdated = x;
-          yUpdated = y + steps;
+          y = y + steps;
         } else if(direction == Direction.NORTHEAST){
-          xUpdated = x + steps;
-          yUpdated = y + steps;
+          x = x + steps;
+          y = y + steps;
         } else if(direction == Direction.EAST){
-          xUpdated = x + steps;
-          yUpdated = y;
+          x = x + steps;
         } else if(direction == Direction.SOUTHEAST){
-          xUpdated = x + steps;
-          yUpdated = y - steps;
+          x = x + steps;
+          y = y - steps;
         } else if(direction == Direction.SOUTH){
-          xUpdated = x;
-          yUpdated = y - steps;
+          y = y - steps;
         } else if(direction == Direction.SOUTHWEST){
-          xUpdated = x - steps;
-          yUpdated = y - steps;
+          x = x - steps;
+          y = y - steps;
         } else if(direction == Direction.WEST){
-          xUpdated = x - steps;
-          yUpdated = y;
+          x = x - steps;
         } else if(direction == Direction.NORTHWEST){
-          xUpdated = x + steps;
-          yUpdated = y + steps;
+          x = x + steps;
+          y = y + steps;
         }
-        markCurrent(brush);
+        markCurrent();
       }
     }
 
