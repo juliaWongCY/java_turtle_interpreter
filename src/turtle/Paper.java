@@ -25,7 +25,7 @@ public class Paper {
 
     public boolean within(int x, int y){
 
-      return (x >= 0 && y >= 0 && x < getWidth() && y < getHeight());
+      return (x >= 0 && y >= 0 && x < width && y < height);
 
     }
 

@@ -54,34 +54,66 @@ public class Turtle {
     }
 
     public void move(int steps){
-      while(paper.within(x, y)){
-        int yUpdated = 0;
-        int xUpdated = 0;
+      //private boolean atEdge
 
-        if(direction == Direction.NORTH){
-          y = y + steps;
-        } else if(direction == Direction.NORTHEAST){
-          x = x + steps;
-          y = y + steps;
-        } else if(direction == Direction.EAST){
-          x = x + steps;
-        } else if(direction == Direction.SOUTHEAST){
-          x = x + steps;
-          y = y - steps;
-        } else if(direction == Direction.SOUTH){
-          y = y - steps;
-        } else if(direction == Direction.SOUTHWEST){
-          x = x - steps;
-          y = y - steps;
-        } else if(direction == Direction.WEST){
-          x = x - steps;
-        } else if(direction == Direction.NORTHWEST){
-          x = x + steps;
-          y = y + steps;
-        }
-        markCurrent();
-      }
+      //  int yUpdated = 0;
+      //  int xUpdated = 0;
+          for (int i = steps; i > 0; i--) {
+
+              if (direction == Direction.NORTH) {
+                y ++;
+              } else if (direction == Direction.NORTHEAST) {
+                x++;
+                y++;
+              } else if (direction == Direction.EAST) {
+                x++;
+              } else if (direction == Direction.SOUTHEAST) {
+                x--;
+                y--;
+              } else if (direction == Direction.SOUTH) {
+                y--;
+              } else if (direction == Direction.SOUTHWEST) {
+                  x--;
+                  y--;
+              } else if (direction == Direction.WEST) {
+                  x--;
+              } else if (direction == Direction.NORTHWEST) {
+                  x++;
+                  y++;
+              }
+              if(paper.within(x, y)) {
+                markCurrent();
+              } else {
+                atEdge();
+              }
+          }
     }
+    private void atEdge(){
+        if (direction == Direction.NORTH) {
+            y--;
+        } else if (direction == Direction.NORTHEAST) {
+            x--;
+            y--;
+        } else if (direction == Direction.EAST) {
+            x--;
+        } else if (direction == Direction.SOUTHEAST) {
+            x++;
+            y++;
+        } else if (direction == Direction.SOUTH) {
+            y++;
+        } else if (direction == Direction.SOUTHWEST) {
+            x++;
+            y++;
+        } else if (direction == Direction.WEST) {
+            x++;
+        } else if (direction == Direction.NORTHWEST) {
+            x--;
+            y--;
+        }
+
+
+    }
+
 
 
 }
