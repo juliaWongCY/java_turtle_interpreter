@@ -4,7 +4,9 @@ public class Paper {
 
     private int width;
     private int height;
-    private char[][] paper = new char[10][10];
+    //private char[][] paper = new char[10][10];
+    private char[][] paper = new char[width][height];
+
 
     public Paper(int width, int height){
         this.width = width;
