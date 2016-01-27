@@ -5,7 +5,7 @@ public class Paper {
     private int width;
     private int height;
     //private char[][] paper = new char[10][10];
-    private char[][] paper = new char[width][height];
+    private char[][] paper = new char[height][width];
 
 
     public Paper(int width, int height){
@@ -29,19 +29,18 @@ public class Paper {
 
     }
 
-    public char mark(int x, int y, char character){
+    public void mark(int x, int y, char character){
         if(within(x,y)){
-         paper[x][y] = character;
+         paper[y][x] = character;
         }
-        return '\u0000';
     }
 
     public String conPaperToString(char[][] paper){
 
       String string = "";
-        for (int x = 0; x < width; x++) {
-          for (int y = 0; y < height; y++) {
-          String output = String.valueOf(paper[x][y]) ;
+        for (int y = 0; y < height; y++) {
+          for (int x = 0; x < width; x++) {
+          String output = String.valueOf(paper[y][x]) ;
           string += output;
           }
         }

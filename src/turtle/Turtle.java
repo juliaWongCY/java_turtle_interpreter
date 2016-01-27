@@ -40,55 +40,68 @@ public class Turtle {
         return state;
     }
 
-    public char changeBrush(char valueNew){
+    public void changeBrush(char valueNew){
 
-      return valueNew;
+      brush = valueNew;
 
     }
 
-    public char markCurrent(){
+    public void markCurrent(){
         if(state == Pen.DOWN){
           paper.mark(x, y, brush);
         }
-        return '\u0000';
     }
 
     public void move(int steps){
-      //private boolean atEdge
 
-      //  int yUpdated = 0;
-      //  int xUpdated = 0;
-          for (int i = steps; i > 0; i--) {
-
-              if (direction == Direction.NORTH) {
-                y ++;
-              } else if (direction == Direction.NORTHEAST) {
-                x++;
-                y++;
-              } else if (direction == Direction.EAST) {
-                x++;
-              } else if (direction == Direction.SOUTHEAST) {
-                x--;
-                y--;
-              } else if (direction == Direction.SOUTH) {
-                y--;
-              } else if (direction == Direction.SOUTHWEST) {
+      for (int i = steps; i > 0; i--) {
+          switch (direction) {
+              case NORTH:
+                  y++;
+              case NORTHEAST:
+                  y++;
+                  x++;
+              case EAST:
+                  x++;
+              case SOUTHWEST:
                   x--;
                   y--;
-              } else if (direction == Direction.WEST) {
+              case WEST:
                   x--;
-              } else if (direction == Direction.NORTHWEST) {
+              case NORTHWEST:
                   x++;
                   y++;
-              }
-              if(paper.within(x, y)) {
-                markCurrent();
-              } else {
-                atEdge();
-              }
           }
+
+          if (paper.within(x, y)) {
+              markCurrent();
+          } else {
+              atEdge();
+          }
+      }
     }
-    private void atEdge(){
+      private void atEdge(){
+        switch (direction) {
+          case NORTH:
+            y--;
+          case NORTHEAST:
+            y--;
+            x--;
+          case EAST:
+            x--;
+          case SOUTHWEST:
+            x++;
+            y++;
+          case WEST:
+            x++;
+          case NORTHWEST:
+            x--;
+            y--;
+          }
+
+        }
+    }
+    /*private void atEdge(){
         if (direction == Direction.NORTH) {
             y--;
         } else if (direction == Direction.NORTHEAST) {
@@ -114,6 +127,6 @@ public class Turtle {
 
     }
 
+*/
 
 
-}
