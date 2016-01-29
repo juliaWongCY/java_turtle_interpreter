@@ -39,11 +39,15 @@ public class TurtleInterpreter {
               String name = scanner.next();
               int x = scanner.nextInt();
               int y = scanner.nextInt();
-              //turtle.put(name, new Turtle(name, x, y, ))
+              Turtle turtleNew = new Turtle(name, x, y, paper);
+              turtle.put(name,turtleNew);
             }
             case "pen":
               String name = scanner.next();
               Pen state = Pen.valueOf(scanner.next());
+                if(state == Pen.UP) {
+                  //do this
+                }
             case "move":
               name = scanner.next();
               int distance = scanner.nextInt();

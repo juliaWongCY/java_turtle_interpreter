@@ -15,25 +15,25 @@ public class Turtle {
     private char brush;
     Paper paper;
 
-    public Turtle(String name, int x, int y, Paper paper, char brush){
+    public Turtle(String name, int x, int y, Paper paper){
       this.name = name;
       this.x = x;
       this.y = y;
-      this.direction = direction;
-      this.state = state;
+      //this.direction = direction;
+      //this.state = state;
       this.paper = paper;
-      this.brush = brush;
+      //this.brush = brush;
 
     }
 
-    public Pen up(){
+    public Pen lift(){
       if(state == Pen.DOWN){
         return Pen.UP;
       }
         return state;
     }
 
-    public Pen put(){
+    public Pen drop(){
       if(state == Pen.UP){
         return Pen.DOWN;
       }
