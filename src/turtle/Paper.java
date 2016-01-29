@@ -35,7 +35,7 @@ public class Paper {
         }
     }
 
-    public String conPaperToString(char[][] paper){
+    public String conPaperToString(){
 
       String string = "";
         for (int y = 0; y < height; y++) {

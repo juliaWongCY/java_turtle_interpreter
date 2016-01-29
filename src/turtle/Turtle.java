@@ -7,7 +7,7 @@ import turtle.util.Rotation;
 */
 public class Turtle {
 
-    private String name;
+    private String name; // todo consider taking out again
     private int x;
     private int y;
     private Direction direction;
@@ -15,7 +15,7 @@ public class Turtle {
     private char brush;
     Paper paper;
 
-    public Turtle(String name, int x, int y, Direction direction, Pen state, Paper paper, char brush){
+    public Turtle(String name, int x, int y, Paper paper, char brush){
       this.name = name;
       this.x = x;
       this.y = y;

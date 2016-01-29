@@ -10,20 +10,12 @@ import java.util.*;
 
 public class TurtleInterpreter {
 
-  private final Map<String, Turtle> turtles = new HashMap<String, Turtle>();
+  private final Map<String, Turtle> turtle = new HashMap<String, Turtle>();
   Scanner scanner = new Scanner(System.in);
   PrintStream print = new PrintStream(System.out);
   private Paper paper;
 
 
-
-    /*public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Printing the file passed in:");
-        while(sc.hasNextLine()) System.out.println(sc.nextLine());
-    }
-
-    */
   public TurtleInterpreter(Scanner scanner, PrintStream print) {
     this.scanner = scanner;
     this.print = print;
@@ -47,6 +39,7 @@ public class TurtleInterpreter {
               String name = scanner.next();
               int x = scanner.nextInt();
               int y = scanner.nextInt();
+              //turtle.put(name, new Turtle(name, x, y, ))
             }
             case "pen":
               String name = scanner.next();
@@ -60,9 +53,10 @@ public class TurtleInterpreter {
             case "left":
               name = scanner.next();
               angle = scanner.nextInt();
-            case "show":
+            case "show": paper.conPaperToString();
+          default:
         }
-
+       //HashMap(name, new Turtle(name, x, y, ));
     }
 
   }
@@ -80,5 +74,14 @@ public class TurtleInterpreter {
           }
         }
       */
+
+
+    /*public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Printing the file passed in:");
+        while(sc.hasNextLine()) System.out.println(sc.nextLine());
+    }
+
+    */
 
 // make another method to run and applied on the turtleInterpreter
