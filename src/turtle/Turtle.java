@@ -7,7 +7,7 @@ import turtle.util.Rotation;
 */
 public class Turtle {
 
-    private String name; // todo consider taking out again
+    //private String name; 
     private int x;
     private int y;
     private Direction direction;
@@ -15,14 +15,14 @@ public class Turtle {
     private char brush;
     Paper paper;
 
-    public Turtle(String name, int x, int y, Paper paper){
-      this.name = name;
+    public Turtle(int x, int y, Paper paper, Direction direction, Pen state, char brush){
+      //this.name = name;
       this.x = x;
       this.y = y;
-      //this.direction = direction;
-      //this.state = state;
+      this.direction = direction;
+      this.state = state;
       this.paper = paper;
-      //this.brush = brush;
+      this.brush = brush;
 
     }
 
@@ -44,6 +44,12 @@ public class Turtle {
 
       brush = valueNew;
 
+    }
+
+    public void rotateMoreTimes(Rotation rotation, int number){
+        for (int i = number; i > 0; i--) {
+          direction.rotate(rotation);
+        }
     }
 
     public void markCurrent(){

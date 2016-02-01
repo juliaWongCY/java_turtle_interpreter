@@ -5,15 +5,15 @@ import java.util.Arrays;
 public enum Direction {
   NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST;
 
-  public Direction rotate(Rotation rotation, int number){
+  public Direction rotate(Rotation rotation){
     Direction[] direction = values();
 
     int currentIndex = Arrays.asList(direction).indexOf(this);
       int newIndex;
       if(rotation == Rotation.RIGHT){
-        newIndex = (currentIndex + number) % direction.length;
+        newIndex = (currentIndex + 1) % direction.length;
       } else {
-        newIndex = (currentIndex - number + direction.length) % direction.length;
+        newIndex = (currentIndex - 1 + direction.length) % direction.length;
       }
 
       return direction[newIndex];
@@ -22,4 +22,19 @@ public enum Direction {
   }
 }
 
+ /* public Direction rotate(Rotation rotation, int number){
+    Direction[] direction = values();
 
+    int currentIndex = Arrays.asList(direction).indexOf(this);
+    int newIndex;
+    if(rotation == Rotation.RIGHT){
+      newIndex = (currentIndex + number) % direction.length;
+    } else {
+      newIndex = (currentIndex - number + direction.length) % direction.length;
+    }
+
+    return direction[newIndex];
+
+
+  }
+*/
