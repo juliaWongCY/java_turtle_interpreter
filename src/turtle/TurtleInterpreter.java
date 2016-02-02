@@ -1,5 +1,7 @@
 package turtle;
 
+import turtle.implementations.BouncyTurtle;
+import turtle.implementations.ContinuousTurtle;
 import turtle.implementations.NormalTurtle;
 import turtle.util.*;
 
@@ -15,9 +17,9 @@ public class TurtleInterpreter {
 
   //private Set<Turtle> turtles;
   private final Map<String, Turtle> turtle = new HashMap<>();
-  Scanner scanner = new Scanner(System.in);
-  PrintStream print = new PrintStream(System.out);
-  private Paper paper;
+  Scanner scanner;
+  PrintStream print;
+  private Paper paper = new Paper(10, 10);
 
 
   public TurtleInterpreter(Scanner scanner, PrintStream print) {
@@ -30,44 +32,54 @@ public class TurtleInterpreter {
 
     while(scanner.hasNext()){
 
-      String line = scanner.nextLine();
-      String[] firstLine = line.split(" ");
+      //String line = scanner.nextLine();
+      //String[] firstLine = line.split(" ");
 
-        switch(firstLine[0]){
+        switch(scanner.next()){
 
           case "paper":
             int width = scanner.nextInt();
             int height = scanner.nextInt();
-            Paper paperNew = new Paper(width, height);
+            paper = new Paper(width, height);
+            break;
 
           case "new":
+            String type = scanner.next();
             String name = scanner.next();
             int x = scanner.nextInt();
             int y = scanner.nextInt();
+            Turtle turtleNew;
 
-            switch (firstLine[1]){
+            switch (type){
               case "normal" :
-                Turtle turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-
-              case "continous":
                 turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
+                break;
+
+              case "continuous":
+                turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+                turtle.put(name,turtleNew);
+                break;
+
 
               case "bouncy":
-                turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+                turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
+                break;
 
-              case "reflecting":
+              /*case "reflecting":
                 turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
+                break;
 
               case "wrapping":
                 turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
+                break; */
+              default:
 
             }
-
+            break;
 
             case "pen":
               name = scanner.next();
@@ -80,21 +92,28 @@ public class TurtleInterpreter {
                   char brushNew = state.charAt(0);
                   turtle.get(name).changeBrush(brushNew);
                 }
+              break;
 
             case "move":
               name = scanner.next();
               int distance = scanner.nextInt();
               turtle.get(name).move(distance);
+              break;
 
             case "right":
               name = scanner.next();
               int angle = scanner.nextInt();
               turtle.get(name).rotateMoreTimes(Rotation.RIGHT,(angle / 45));
+              break;
+
             case "left":
               name = scanner.next();
               angle = scanner.nextInt();
               turtle.get(name).rotateMoreTimes(Rotation.LEFT,(angle / 45));
-            case "show": paper.conPaperToString();
+              break;
+
+            case "show": print.println(paper.conPaperToString());
+              break;
           default:
         }
 

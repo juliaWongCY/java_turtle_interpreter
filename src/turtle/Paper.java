@@ -4,13 +4,24 @@ public class Paper {
 
     private int width;
     private int height;
-    //private char[][] paper = new char[10][10];
-    private char[][] paper = new char[height][width];
+    private char[][] paper;
+
+
 
 
     public Paper(int width, int height){
         this.width = width;
         this.height = height;
+
+        paper = new char[height][width];
+
+        for (int y = 0; y < height; y++) {
+          for (int x = 0; x < width; x++) {
+              paper[y][x] = ' ';
+
+            }
+
+        }
     }
 
     public int getWidth(){
@@ -38,11 +49,12 @@ public class Paper {
     public String conPaperToString(){
 
       String string = "";
-        for (int y = 0; y < height; y++) {
+        for (int y = height - 1; y >= 0; y--) {
           for (int x = 0; x < width; x++) {
           String output = String.valueOf(paper[y][x]) ;
           string += output;
           }
+          string += '\n';
         }
       return string;
     }
