@@ -25,7 +25,8 @@ public abstract class AbstractTurtle implements Turtle {
         }
 
         public void lift() {
-          state = Pen.UP;
+
+            state = Pen.UP;
         }
 
 

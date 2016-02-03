@@ -1,8 +1,6 @@
 package turtle;
 
-import turtle.implementations.BouncyTurtle;
-import turtle.implementations.ContinuousTurtle;
-import turtle.implementations.NormalTurtle;
+import turtle.implementations.*;
 import turtle.util.*;
 
 import java.io.PrintStream;
@@ -67,15 +65,16 @@ public class TurtleInterpreter {
                 turtle.put(name,turtleNew);
                 break;
 
-              /*case "reflecting":
-                turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+             case "reflecting":
+                turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
                 break;
 
-              case "wrapping":
-                turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+             case "wrapping":
+                turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
                 turtle.put(name,turtleNew);
-                break; */
+                break;
+
               default:
 
             }
