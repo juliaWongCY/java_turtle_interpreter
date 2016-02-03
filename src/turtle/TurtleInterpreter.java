@@ -42,46 +42,11 @@ public class TurtleInterpreter {
             break;
 
           case "new":
-            String type = scanner.next();
-            String name = scanner.next();
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
-            Turtle turtleNew;
-
-            switch (type){
-              case "normal" :
-                turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-                break;
-
-              case "continuous":
-                turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-                break;
-
-
-              case "bouncy":
-                turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-                break;
-
-             case "reflecting":
-                turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-                break;
-
-             case "wrapping":
-                turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-                turtle.put(name,turtleNew);
-                break;
-
-              default:
-
-            }
+            makeTurtle(" ");
             break;
 
             case "pen":
-              name = scanner.next();
+              String name = scanner.next();
               String state = scanner.next();
                 if(state.equals("up")) {
                   turtle.get(name).lift();
@@ -119,7 +84,67 @@ public class TurtleInterpreter {
     }
 
   }
+
+  private Turtle makeTurtle(String prefix){
+
+    String type = scanner.next();
+    String name = scanner.next();
+    int x = scanner.nextInt();
+    int y = scanner.nextInt();
+    Turtle turtleNew;
+
+    switch (type){
+
+      case "normal" :
+        turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+        turtle.put(name,turtleNew);
+        break;
+
+      case "continuous":
+        turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+        turtle.put(name,turtleNew);
+        break;
+
+
+      case "bouncy":
+        turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+        turtle.put(name,turtleNew);
+        break;
+
+      case "reflecting":
+        turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+        turtle.put(name,turtleNew);
+        break;
+
+      case "wrapping":
+        turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+        turtle.put(name,turtleNew);
+        break;
+
+      case "cluster":
+        int size = scanner.nextInt();
+        Turtle[] turtles = new Turtle[size];
+
+
+
+
+      default:
+
+    }
+    //turtle.put(name,turtleNew);
+
+
+  }
 }
+
+
+
+
+
+
+
+
+
 
  /*  if(firstLine[0].equals("paper")){
 
