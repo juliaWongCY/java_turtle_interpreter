@@ -43,6 +43,7 @@ public class ReflectingTurtle extends AbstractTurtle {
             break;
         }
 
+
       if (x == 0 && direction == Direction.NORTHWEST){
           y++;
           direction = Direction.NORTHEAST;

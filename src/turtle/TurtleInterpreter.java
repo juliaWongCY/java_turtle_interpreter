@@ -100,43 +100,35 @@ public class TurtleInterpreter {
           System.exit(3);
         }
         turtles[i] = makeTurtle( name + ".");
-        //turtle.put(prefix, turtleNew);
       }
       turtleNew = new ClusterTurtle(turtles);
 
-      } else {
+    } else {
 
       int x = scanner.nextInt();
       int y = scanner.nextInt();
-      //String otherTurtle;
-      //Turtle turtleNew;
 
       switch (type) {
 
         case "normal":
           turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-          //turtle.put(name,turtleNew);
           break;
 
         case "continuous":
           turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-          //turtle.put(name,turtleNew);
           break;
 
 
         case "bouncy":
           turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-          //turtle.put(name,turtleNew);
           break;
 
         case "reflecting":
           turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-          //turtle.put(name,turtleNew);
           break;
 
         case "wrapping":
           turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-          //turtle.put(name,turtleNew);
           break;
 
 
@@ -144,9 +136,10 @@ public class TurtleInterpreter {
 
       }
     }
-   turtle.put(name, turtleNew);
-   return turtleNew;
+  turtle.put(name, turtleNew);
+  return turtleNew;
   }
+
 }
 
 
