@@ -12,13 +12,13 @@ public class ReflectingTurtle extends AbstractTurtle {
   }
     @Override
     public void applyingMove(){
-        if(paper.within(x, y)) {
-            markCurrent();
-        } else {
-            moveAtEdge();
-            reflect();
-            markCurrent();
-        }
+      if(paper.within(x, y)) {
+        markCurrent();
+      } else {
+        moveAtEdge();
+        reflect();
+        markCurrent();
+      }
     }
 
     public void reflect(){
@@ -42,6 +42,7 @@ public class ReflectingTurtle extends AbstractTurtle {
             direction = Direction.EAST;
             break;
         }
+
       if (x == 0 && direction == Direction.NORTHWEST){
           y++;
           direction = Direction.NORTHEAST;

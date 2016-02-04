@@ -8,12 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.lang.*;
-import java.util.*;
 
 public class TurtleInterpreter {
 
 
-  //private Set<Turtle> turtles;
   private final Map<String, Turtle> turtle = new HashMap<>();
   Scanner scanner;
   PrintStream print;
@@ -24,62 +22,60 @@ public class TurtleInterpreter {
     this.scanner = scanner;
     this.print = print;
 
-    }
+  }
 
   public void run(){
 
     while(scanner.hasNext()){
 
-      //String line = scanner.nextLine();
-      //String[] firstLine = line.split(" ");
+      switch(scanner.next()){
 
-        switch(scanner.next()){
+        case "paper":
+          int width = scanner.nextInt();
+          int height = scanner.nextInt();
+          paper = new Paper(width, height);
+          break;
 
-          case "paper":
-            int width = scanner.nextInt();
-            int height = scanner.nextInt();
-            paper = new Paper(width, height);
+        case "new":
+          makeTurtle("");
+          break;
+
+        case "pen":
+          String name = scanner.next();
+          String state = scanner.next();
+
+            if(state.equals("up")) {
+              turtle.get(name).lift();
+            } else if(state.equals("down")){
+              turtle.get(name).drop();
+            } else {
+              char brushNew = state.charAt(0);
+              turtle.get(name).changeBrush(brushNew);
+            }
             break;
 
-          case "new":
-            makeTurtle(" ");
-            break;
+        case "move":
+          name = scanner.next();
+          int distance = scanner.nextInt();
+          turtle.get(name).move(distance);
+          break;
 
-            case "pen":
-              String name = scanner.next();
-              String state = scanner.next();
-                if(state.equals("up")) {
-                  turtle.get(name).lift();
-                } else if(state.equals("down")){
-                  turtle.get(name).drop();
-                } else {
-                  char brushNew = state.charAt(0);
-                  turtle.get(name).changeBrush(brushNew);
-                }
-              break;
+        case "right":
+          name = scanner.next();
+          int angle = scanner.nextInt();
+          turtle.get(name).rotateMoreTimes(Rotation.RIGHT,(angle / 45));
+          break;
 
-            case "move":
-              name = scanner.next();
-              int distance = scanner.nextInt();
-              turtle.get(name).move(distance);
-              break;
+        case "left":
+          name = scanner.next();
+          angle = scanner.nextInt();
+          turtle.get(name).rotateMoreTimes(Rotation.LEFT,(angle / 45));
+          break;
 
-            case "right":
-              name = scanner.next();
-              int angle = scanner.nextInt();
-              turtle.get(name).rotateMoreTimes(Rotation.RIGHT,(angle / 45));
-              break;
-
-            case "left":
-              name = scanner.next();
-              angle = scanner.nextInt();
-              turtle.get(name).rotateMoreTimes(Rotation.LEFT,(angle / 45));
-              break;
-
-            case "show": print.println(paper.conPaperToString());
-              break;
-          default:
-        }
+        case "show": print.println(paper.conPaperToString());
+          break;
+        default:
+      }
 
     }
 
@@ -88,92 +84,70 @@ public class TurtleInterpreter {
   private Turtle makeTurtle(String prefix){
 
     String type = scanner.next();
-    String name = scanner.next();
-    int x = scanner.nextInt();
-    int y = scanner.nextInt();
-    Turtle turtleNew;
+    String name = prefix + scanner.next();
 
-    switch (type){
+    System.out.println("type = " + type + ", name = " + name);
 
-      case "normal" :
-        turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-        turtle.put(name,turtleNew);
-        break;
-
-      case "continuous":
-        turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-        turtle.put(name,turtleNew);
-        break;
+    Turtle turtleNew = null;
 
 
-      case "bouncy":
-        turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-        turtle.put(name,turtleNew);
-        break;
+    if(type.equals("cluster")){
+      int size = scanner.nextInt();
+      Turtle[] turtles = new Turtle[size];
+      for (int i = 0; i < size; i++) {
+        if(!scanner.next().equals("new")){
+          System.out.println("exception in creating a cluster");
+          System.exit(3);
+        }
+        turtles[i] = makeTurtle( name + ".");
+        //turtle.put(prefix, turtleNew);
+      }
+      turtleNew = new ClusterTurtle(turtles);
 
-      case "reflecting":
-        turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-        turtle.put(name,turtleNew);
-        break;
+      } else {
 
-      case "wrapping":
-        turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-        turtle.put(name,turtleNew);
-        break;
+      int x = scanner.nextInt();
+      int y = scanner.nextInt();
+      //String otherTurtle;
+      //Turtle turtleNew;
 
-      case "cluster":
-        int size = scanner.nextInt();
-        Turtle[] turtles = new Turtle[size];
+      switch (type) {
+
+        case "normal":
+          turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          //turtle.put(name,turtleNew);
+          break;
+
+        case "continuous":
+          turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          //turtle.put(name,turtleNew);
+          break;
 
 
+        case "bouncy":
+          turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          //turtle.put(name,turtleNew);
+          break;
+
+        case "reflecting":
+          turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          //turtle.put(name,turtleNew);
+          break;
+
+        case "wrapping":
+          turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          //turtle.put(name,turtleNew);
+          break;
 
 
-      default:
+        default:
 
+      }
     }
-    //turtle.put(name,turtleNew);
-
-
+   turtle.put(name, turtleNew);
+   return turtleNew;
   }
 }
 
 
 
-
-
-
-
-
-
-
- /*  if(firstLine[0].equals("paper")){
-
-        }
-
-        if (firstLine[0].equals("new")) {
-          if (firstLine[1].equals("normal")){
-            String name = scanner.next();
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
-          }
-        }
-      */
-
-
-    /*public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Printing the file passed in:");
-        while(sc.hasNextLine()) System.out.println(sc.nextLine());
-    }
-
-    if (firstLine[1].equals("normal")){
-              String name = scanner.next();
-              int x = scanner.nextInt();
-              int y = scanner.nextInt();
-              //Turtle turtleNew = new Turtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
-              //turtle.put(name,turtleNew);
-            }
-
-    */
-
-// make another method to run and applied on the turtleInterpreter

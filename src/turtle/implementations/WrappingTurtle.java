@@ -12,13 +12,13 @@ public class WrappingTurtle extends AbstractTurtle{
 
     @Override
     public void applyingMove(){
-        if(paper.within(x, y)) {
-            markCurrent();
-        } else {
-            moveAtEdge();
-            wrap();
-            markCurrent();
-        }
+      if(paper.within(x, y)) {
+        markCurrent();
+      } else {
+        moveAtEdge();
+        wrap();
+        markCurrent();
+      }
     }
 
     private void wrap(){
@@ -26,69 +26,61 @@ public class WrappingTurtle extends AbstractTurtle{
       int corY = paper.getHeight() - 1;
         switch (direction) {
 
-            case NORTH:
+          case NORTH:
+            y = y - corY;
+            break;
+
+          case NORTHEAST:
+            if(y == corY) {
               y = y - corY;
-              break;
+              x ++;
+            } else if(x == corX) {
+              x = x - corX;
+              y ++;
+            }
+            break;
 
-            case NORTHEAST:
-              if(y == corY) {
-                y = y - corY;
-                //x -= 1;
-                x ++;
-              } else if(x == corX) {
-                x = x - corX;
-                //y -= 1;
-                y ++;
-              }
-              break;
+          case EAST:
+            x = x - corX;
+            break;
 
-            case EAST:
-                x = x - corX;
-                break;
+          case SOUTHEAST:
+            if(x == corX) {
+              x = x - corX;
+              y --;
+            } else if(y == 0) {
+              x ++;
+              y = corY;
+            }
+            break;
 
-            case SOUTHEAST:
-              if(x == corX) {
-                x = x - corX;
-                //y += 1;
-                y --;
-              } else if(y == 0) {
-                //x -= 1;
-                x ++;
-                y = corY;
-              }
-              break;
+          case SOUTH:
+            y = corY;
+            break;
 
-            case SOUTH:
-                y = corY;
-                break;
+          case SOUTHWEST:
+            if(x == 0) {
+              x = corX;
+              y --;
+            } else if(y == 0) {
+              x --;
+              y = corY;
+            }
+            break;
 
-            case SOUTHWEST:
-              if(x == 0) {
-                x = corX;
-                //y += 1;
-                y --;
-              } else if(y == 0) {
-                //x -= 1;
-                x --;
-                y = corY;
-              }
-              break;
+          case WEST:
+            x = corX;
+            break;
 
-            case WEST:
-                x = corX;
-                break;
-
-            case NORTHWEST:
-              if(x == 0) {
-                //y -= 1;
-                y ++;
-                x = corX;
-              } else if(y == corY) {
-                  //x += 1;
-                  x --;
-                  y = y - corY;
-              }
-              break;
+          case NORTHWEST:
+            if(x == 0) {
+              y ++;
+              x = corX;
+            } else if (y == corY) {
+              x --;
+              y = y - corY;
+            }
+            break;
         }
 
     }

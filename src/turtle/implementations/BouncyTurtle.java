@@ -17,14 +17,14 @@ public class BouncyTurtle extends AbstractTurtle{
 
     @Override
     public void applyingMove(){
-        if(paper.within(x, y)) {
-          markCurrent();
-        } else {
-          moveAtEdge();
-          int rotateNum = 180/45;
-          rotateMoreTimes(Rotation.RIGHT, rotateNum);
-          markCurrent();
-        }
+      if(paper.within(x, y)) {
+        markCurrent();
+      } else {
+        moveAtEdge();
+        int rotateNum = 180/45;
+        rotateMoreTimes(Rotation.RIGHT, rotateNum);
+        markCurrent();
+      }
 
     }
 
