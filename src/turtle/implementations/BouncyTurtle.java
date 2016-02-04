@@ -9,8 +9,10 @@ import turtle.util.Rotation;
 public class BouncyTurtle extends AbstractTurtle{
 
 
-  public BouncyTurtle(int x, int y, Paper paper, Direction direction, Pen state, char brush){
-      super(x, y, paper, direction, state, brush);
+  public BouncyTurtle(int x, int y, Paper paper,
+                      Direction direction, Pen state, char brush){
+
+    super(x, y, paper, direction, state, brush);
 
   }
 

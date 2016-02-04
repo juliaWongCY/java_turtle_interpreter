@@ -14,7 +14,8 @@ public abstract class AbstractTurtle implements Turtle {
   protected char brush;
   Paper paper;
 
-  public AbstractTurtle(int x, int y, Paper paper, Direction direction, Pen state, char brush){
+  public AbstractTurtle(int x, int y, Paper paper,
+                        Direction direction, Pen state, char brush){
     this.x = x;
     this.y = y;
     this.direction = direction;

@@ -7,7 +7,9 @@ import turtle.util.Pen;
 
 public class ContinuousTurtle extends AbstractTurtle {
 
-    public ContinuousTurtle(int x, int y, Paper paper, Direction direction, Pen state, char brush) {
+    public ContinuousTurtle(int x, int y, Paper paper,
+                            Direction direction, Pen state, char brush) {
+
       super(x, y, paper, direction, state, brush);
 
     }

@@ -111,24 +111,29 @@ public class TurtleInterpreter {
       switch (type) {
 
         case "normal":
-          turtleNew = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          turtleNew
+            = new NormalTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
           break;
 
         case "continuous":
-          turtleNew = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          turtleNew
+            = new ContinuousTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
           break;
 
 
         case "bouncy":
-          turtleNew = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          turtleNew
+            = new BouncyTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
           break;
 
         case "reflecting":
-          turtleNew = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          turtleNew
+            = new ReflectingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
           break;
 
         case "wrapping":
-          turtleNew = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
+          turtleNew
+            = new WrappingTurtle(x, y, paper, Direction.NORTH, Pen.UP, '*');
           break;
 
 

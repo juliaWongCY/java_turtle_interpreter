@@ -7,8 +7,11 @@ import turtle.util.Pen;
 
 public class ReflectingTurtle extends AbstractTurtle {
 
-  public ReflectingTurtle(int x, int y, Paper paper, Direction direction, Pen state, char brush){
+  public ReflectingTurtle(int x, int y, Paper paper,
+                          Direction direction, Pen state, char brush){
+
     super(x, y, paper, direction, state, brush);
+
   }
     @Override
     public void applyingMove(){
