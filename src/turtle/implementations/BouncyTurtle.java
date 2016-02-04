@@ -2,7 +2,6 @@ package turtle.implementations;
 
 
 import turtle.Paper;
-import turtle.Turtle;
 import turtle.util.Direction;
 import turtle.util.Pen;
 import turtle.util.Rotation;

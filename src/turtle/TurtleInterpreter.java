@@ -97,7 +97,7 @@ public class TurtleInterpreter {
       for (int i = 0; i < size; i++) {
         if(!scanner.next().equals("new")){
           System.out.println("exception in creating a cluster");
-          System.exit(3);
+          System.exit(1);
         }
         turtles[i] = makeTurtle( name + ".");
       }

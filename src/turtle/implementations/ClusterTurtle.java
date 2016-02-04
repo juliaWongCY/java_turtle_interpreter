@@ -1,7 +1,6 @@
 package turtle.implementations;
 
 import turtle.Turtle;
-import turtle.util.Pen;
 import turtle.util.Rotation;
 
 public class ClusterTurtle implements Turtle {
